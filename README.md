@@ -42,12 +42,12 @@ node scripts/placar.mjs docs/sessoes/*.jsonl
 Você precisa de Node.js 22.12 ou mais novo, git e [Claude Code](https://code.claude.com) (com conta Claude Pro ou chave de API). Não precisa de Docker nem de banco de dados: a loja usa SQLite.
 
 ```bash
-git clone https://github.com/alexandreaquiles/loja-legado-sprint1.git
+git clone https://github.com/Paula-Thamyres/loja-legado-sprint1.git
 cd loja-legado-sprint1
 npm install       # ~2 minutos e ~800 MB: o Vendure inteiro vem em node_modules
 npm run setup     # branches locais, .env (segredos falsos) e vendure.sqlite (54 produtos de exemplo)
-npm test          # 5 testes verdes (vitest, cerca de 1 segundo)
-npm run conferir  # confere os cards 00 a 04: no começo só o 00 fica todo ✔
+npm test          # 20 testes verdes (vitest, poucos segundos)
+npm run conferir  # confere os cards 00 a 04: com a entrega, todos ficam ✔
 npm run dev       # sobe a loja: http://localhost:3000/dashboard (superadmin / superadmin)
 claude            # abre o agente na raiz do projeto
 ```
@@ -74,7 +74,7 @@ As tarefas essenciais são as que o professor resolve ao vivo na quinta. Tente a
 
 ## Branches
 
-- `main`: o estado inicial, como o time deixou.
+- `main`: a minha entrega da Sprint 1. O estado inicial, como o time deixou, está no [repositório original](https://github.com/alexandreaquiles/loja-legado-sprint1).
 - `gabarito`: uma solução de referência para os cards 02 a 04 (harness, spec, plano e implementação) e a referência da Intermediária em `docs/intermediaria/`. Vale mais espiar depois de tentar: `git show gabarito:<arquivo>`.
 
 ## Como entregar o Desafio
