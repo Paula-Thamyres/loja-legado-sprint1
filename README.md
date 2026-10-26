@@ -12,6 +12,31 @@ Este é o repositório do projeto prático da Sprint 1: a loja da empresa, migra
 | Aula ao vivo | quinta, 01/10/2026, 9h–10h |
 | Entrega do Desafio | sexta, 02/10/2026, no Discord da turma |
 
+## Minha entrega
+
+Fork do repositório da Sprint 1 do Conecta+ #11, com as tarefas essenciais 00 a 04, a Intermediária e os três níveis do Desafio (trilha dev). O plano, a implementação do cupom, o frete grátis e a correção do Desafio N3 foram feitos pelo agente no Claude Code, com os hooks ligados, e cada sessão foi medida.
+
+| Tarefa | O que foi feito | Onde ver |
+|---|---|---|
+| 00 · Ambiente | `/context` da sessão vazia: 46,2k tokens, 16,2k só de memória | [placar](docs/placar.md) |
+| 01 · Pedido vago | O agente entregou um teto de 50% inventado, com nomes que o teste de aceite recusa | [placar](docs/placar.md#tarefa-01-contra-tarefa-04) |
+| 02 · Harness | `CLAUDE.md` de 910 para 6 linhas (memória −91%), `.env` negado, `guard.sh`, hooks de teste e o subagente `revisor-codigo` | [AGENTS.md](AGENTS.md), [provas](docs/placar.md#provas-do-harness-tarefa-02) |
+| 03 · Spec e plano | `SPEC.md` com regras, restrições e um comando como critério; plano gerado pelo agente | [SPEC.md](SPEC.md), [plano](docs/plano.md) |
+| 04 · Loop | Plugin `cupons` com teto de 30% e cupom único, teste de aceite intacto | [src/plugins/cupons](src/plugins/cupons) |
+| 05 · Intermediária | Spec de 5 linhas do cupom FRETEGRATIS e a implementação | [spec](docs/intermediaria/SPEC-frete-gratis.md) |
+| 06 · Desafio | N1, N2 (stop-gate que verifica tipos e placar das sessões) e N3 (teste e2e com `@vendure/testing`) | [entrega do Desafio](docs/desafio/ENTREGA.md) |
+
+Para conferir:
+
+```bash
+npm install
+npm run setup
+npm test && npx tsc --noEmit   # 20 testes verdes, tipos ok
+npm run test:e2e               # 3 testes ponta a ponta, sobe uma loja de verdade
+npm run conferir               # 36 ✔ no Linux e no Mac (35 no Windows, que não tem bit de execução)
+node scripts/placar.mjs docs/sessoes/*.jsonl
+```
+
 ## Preparar o ambiente
 
 Você precisa de Node.js 22.12 ou mais novo, git e [Claude Code](https://code.claude.com) (com conta Claude Pro ou chave de API). Não precisa de Docker nem de banco de dados: a loja usa SQLite.
