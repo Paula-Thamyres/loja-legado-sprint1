@@ -10,3 +10,5 @@ static/email/test-emails
 src/gql/
 .tanstack/
 static/assets/cache/
+# banco dos testes e2e (o SqljsInitializer recria quando não existe)
+test-e2e/__data__/
