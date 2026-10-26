@@ -1,4 +1,5 @@
 import { PluginCommonModule, RuntimeVendureConfig, VendurePlugin } from '@vendure/core';
+import { removerAcoesSemTeto } from './remover-acoes-sem-teto';
 import { cupomUnico, descontoPercentualComTeto } from './promocoes';
 
 export function configurarCupons(config: RuntimeVendureConfig): RuntimeVendureConfig {
@@ -10,6 +11,6 @@ export function configurarCupons(config: RuntimeVendureConfig): RuntimeVendureCo
 
 @VendurePlugin({
     imports: [PluginCommonModule],
-    configuration: configurarCupons,
+    configuration: config => removerAcoesSemTeto(configurarCupons(config)),
 })
 export class CuponsPlugin {}
