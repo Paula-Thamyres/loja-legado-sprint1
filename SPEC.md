@@ -22,9 +22,9 @@ src/plugins/cupons/index.ts           reexporta os três arquivos acima
 
 ## Regras
 
-1. Teto: o percentual aplicado é `min(pct, 30)`. `pct = 50` em R$ 100,00 desconta R$ 30,00.
+1. Teto: o percentual aplicado é `min(pct, 30)`. `pct = 50` em R$ 100,00 desconta R$ 30,00. O 30 fica numa constante `TETO_PERCENTUAL` em `regras.ts`; torná-lo configurável não faz parte desta tarefa.
 2. Centavos: o desconto é inteiro, arredondado com `Math.round`. 10% de R$ 33,33 (`3333`) = `333`.
-3. Sinal: `execute` devolve o desconto negativo (`-3000`). Nunca positivo: `pct` negativo conta como 0.
+3. Sinal: `execute` devolve o desconto negativo (`-3000`). Nunca positivo: `pct` negativo conta como 0, e sem desconto o retorno é `0` (não `-0`).
 4. Imposto: a base é `order.subTotalWithTax` quando `ctx.channel.pricesIncludeTax` é true e `order.subTotal` quando é false.
 5. Cupom único: `cupomUnico.check` devolve `false` quando `order.couponCodes` tem mais de um código.
 6. Pedido vazio: `cupomUnico.check` devolve `false` quando `order.lines` está vazio.
@@ -37,10 +37,11 @@ src/plugins/cupons/index.ts           reexporta os três arquivos acima
 - Mudar só `src/plugins/cupons/` e a linha do plugin em `src/vendure-config.ts`.
 - Não instalar dependências. Não tocar em `vendure.sqlite`, migrations ou `synchronize`.
 - Não criar entidade, resolver GraphQL nem endpoint.
+- Não criar testes novos nesta tarefa: o teste de aceite é o critério.
 
 ## Critério de aceite
 
-`test/cupom.test.ts` passa sem alteração, os testes antigos continuam verdes e `npx tsc --noEmit` passa com o plugin registrado.
+`test/cupom.test.ts`, trazido pelo dev da branch `gabarito` (`git checkout gabarito -- test/cupom.test.ts`) antes da implementação, passa sem alteração, os testes antigos continuam verdes e `npx tsc --noEmit` passa com o plugin registrado.
 
 ## Verificação
 
